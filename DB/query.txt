@@ -1,0 +1,46 @@
+http://localhost/restuarant/
+#################
+
+SELECT Restaurant_table1.Name, Coupons.Coupon_code,Restaurant_table1.Restaurant_id,Coupons.Ema_id, Coupons.Date, Coupons.Discount 
+FROM Restaurant_table1 
+
+LEFT JOIN Coupons on Restaurant_table1.Restaurant_id = Coupons.Resta_id
+
+where (Coupons.Date = '2015-01-09')
+
+###################
+
+SELECT distinct user.Name,user.Email_id,(SELECT SUM(price+Service+Food_Quality+Ambience+ Overall_Experience) 
+from review 
+
+where review.Em_id = user.Email_id) 'Rating'
+ 
+FROM user
+
+INNER JOIN review on review.Em_id = user.Email_id
+
+Having Rating>20
+
+#######################
+
+select * from dish_preference where (preference)>2;
+
+http://localhost/restuarant/coupon.php?restaurant=1&email=lasya123@gmail.com
+
+
+######
+SELECT restaurant_table1.Name FROM restaurant_table1
+
+INNER JOIN restaurant_address on restaurant_table1.Restaurant_id = restaurant_address.Restaurant_id
+
+INNER JOIN user on restaurant_address.Rest_address= user.Address_state 
+
+where user.Address_state = 'Florida'
+
+#####
+
+SELECT dish.Name FROM dish
+
+INNER JOIN Cusine on dish.Cusine_id = Cusine.Cusine_id
+
+where Cusine.Name= 'American'
